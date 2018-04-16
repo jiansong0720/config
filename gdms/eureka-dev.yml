@@ -1,0 +1,30 @@
+server:
+  port: ${port:8997}
+
+spring:
+  application:
+    name: eureka
+#  cloud:
+#    config:
+#      label: master
+#      profile: jiansong
+#      uri: http://localhost:10000/
+#
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch_registry: false #是否将eureka自身作为应用注册到eureka注册中心
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+
+security:
+  user:
+    password: funing
+
+logging:
+  level:
+    root: warn
