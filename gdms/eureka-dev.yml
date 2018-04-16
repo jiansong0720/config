@@ -1,15 +1,6 @@
 server:
   port: ${port:8997}
 
-spring:
-  application:
-    name: eureka
-#  cloud:
-#    config:
-#      label: master
-#      profile: jiansong
-#      uri: http://localhost:10000/
-#
 eureka:
   instance:
     hostname: localhost
