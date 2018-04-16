@@ -1,0 +1,53 @@
+server:
+  port: 9001
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:funing@${eureka.host:localhost}:${eureka.port:8997}/eureka/
+  instance:
+    prefer-ip-address: true
+
+spring:
+  application:
+    name: inout #项目名称
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+  datasource:
+    name: datasource
+    initialize: false
+    url: ${datasource.url:jdbc:mysql://192.168.1.246:3306/gdms?useUnicode=true&characterEncoding=utf-8&useSSL=false}
+    username: ${datasource.username:root}
+    password: ${datasource.password:sBtbGSMw}
+    driverClassName: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    #连接池的配置信息
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    connectionProperties: 'druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000'
+  redis:
+    database: 11
+    host: ${redis.host:192.168.1.246}
+    password: ${redis.password:UDgTvjuR}
+    port: ${redis.port:6381}
+
+nginx:
+  path: /usr/local/nginx/html/gdms/       #文件上传地址
+  url: http://192.168.1.246:8090/gdms/    #文件访问地址
+
+logging:
+  level:
+    root: warn
